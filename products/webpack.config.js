@@ -6,19 +6,19 @@ module.exports = {
         port: 8081
     },
     plugins: [
+        new HtmlWebpackPlugin(
+            {
+                template: './public/index.html',
+            }
+        ),
         new ModuleFederationPlugin(
             {
                 name:'products',
                 filename:'remoteEntry.js',
                 exposes: {
-                    './ProductsIndex':'./src/index'
+                    './ProductsIndex':'./src/index.js'
                 }
             },
-        ),
-        new HtmlWebpackPlugin(
-            {
-                template: './public/index.html',
-            }
         ),
     ]
 }
